@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL =     'http://10.65.43.87:8000/api';    
 
 
-// 'http://127.0.0.1:8000/api';  original url
+// 'http://127.0.0.1:8000/api';  original url.........
 
 // Request OTP
 export const requestOtp = async (mobileNumber) => {
@@ -13,6 +13,6 @@ export const requestOtp = async (mobileNumber) => {
 
 // Verify OTP
 export const verifyOtp = async (mobileNumber, otp) => {
-  const response = await axios.post(`${BASE_URL}/auth/verify-otp/`, { mobile: mobileNumber, otp });
-  return response.data;  // contains token, business flag, etc.
-};
+    const response = await axios.post(`${BASE_URL}/auth/verify-otp/`, { mobile: mobileNumber, otp });
+    return response.data;  // contains token, business flag, etc.
+  };

@@ -3,13 +3,14 @@ import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "expo-router";
 import Flag from "../assets/Svgicons/Flag";
-import Checked from "../assets/Svgicons/Checked";
+import { Colors } from "@/constants/Colors";
 import Checkbox from "expo-checkbox";
 import Verify from "../assets/Svgicons/Checked";
 import Google from "../assets/Svgicons/Google";
 import Facebook from "../assets/Svgicons/Facebook";
 import Apple from "../assets/Svgicons/Apple";
 import {requestOtp} from "../app/services/authService";
+
 
 const Index = () => {
   const [text, setText] = useState("");
@@ -101,7 +102,7 @@ const Index = () => {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#FFFFFF",
+    backgroundColor:Colors.White,
   },
   container: {
     flex: 1,
@@ -194,7 +195,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: "#FFF"
+    backgroundColor: Colors.White,
   },
   iconWithShadow: {
     margin: 40       // SPACE BETWEEN ICONS.................//
@@ -206,16 +207,16 @@ const styles = StyleSheet.create({
   },
   Nextbutton: {
     borderWidth: 1,
-    backgroundColor: "#19A047",
+    backgroundColor: Colors.Green,
     height: 50,
     width: 300,
     borderRadius: 40,
-    borderColor: "#19A047",
+    borderColor:  Colors.Green,
     justifyContent: 'center', 
     alignItems: 'center'      // Add this to center text horizontal
   },
   Nexttext: {
-    color: '#FFFFFF',
+    color:  Colors.White,
     fontSize: 20
   }
 });

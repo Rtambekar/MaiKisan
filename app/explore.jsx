@@ -3,7 +3,7 @@ import React from 'react'
 
 const explore = () => {
   return (
-    <View style={{backgroundColor: "#FFFFFF"}}>
+    <View style={{backgroundColor: "#FFFFFF", flex:1 ,justifyContent: "center", alignItems: "center"}}>
       <Text>explore</Text>
     </View>
   )
