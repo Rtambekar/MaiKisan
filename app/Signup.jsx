@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  View, 
-  Text, 
-  TextInput, 
-  Alert, 
-  ScrollView, 
-  StyleSheet, 
-  TouchableOpacity,
-  ActivityIndicator,
-  Platform
+import {
+    View,
+    Text,
+    TextInput,
+    Alert,
+    ScrollView,
+    StyleSheet,
+    TouchableOpacity,
+    ActivityIndicator,
+    Platform
 } from 'react-native';
-import { createBusiness } from './services/businessService';
+import { createBusiness } from './services/_businessService';
 import { useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Colors } from '../constants/Colors';
@@ -34,7 +34,7 @@ const Signup = () => {
     });
 
     const handleChange = (field, value) => {
-        setFormData({ ...formData, [field]: value });
+        setFormData({ ...formData, [field]: value });  // spread operator change the required feilds only.
     };
 
     const handleSubmit = async () => {
@@ -42,7 +42,7 @@ const Signup = () => {
             setIsLoading(true);
             // Fetch token directly inside this function before calling createBusiness
             const token = await AsyncStorage.getItem('authToken');
-           
+
             if (!token) {
                 Alert.alert('Error', 'You are not authenticated. Please log in again.');
                 return;  // Stop if token is missing.................
@@ -50,7 +50,7 @@ const Signup = () => {
 
             const response = await createBusiness(formData, token);
             Alert.alert('Success', 'Business created successfully!');
-            router.replace('/explore');
+            router.replace('/LanguageSelection');
 
 
         } catch (error) {
@@ -84,7 +84,7 @@ const Signup = () => {
         'Maharashtra': ['Select District', 'Mumbai', 'Pune', 'Nagpur', 'Thane', 'Nashik'],
         'Karnataka': ['Select District', 'Bangalore', 'Mysore', 'Hubli', 'Mangalore', 'Belgaum'],
         'Tamil Nadu': ['Select District', 'Chennai', 'Coimbatore', 'Madurai', 'Salem', 'Trichy']
-        
+
     };
     // Simple cities mapping 
     const cityMap = {
@@ -171,15 +171,16 @@ const Signup = () => {
                     <Text style={styles.inputLabel}>District</Text>
                     <View style={styles.pickerContainer}>
                         <Picker
-                            selectedValue={formData.district}
-                            onValueChange={(value) => handleChange('district', value)}
+                            selectedValue={formData.district}  // Current selected district
+                            onValueChange={(value) => handleChange('district', value)}  // Update district on change
                             style={styles.picker}
-                            enabled={formData.state !== 'Select State' && formData.state !== ''}
+                            enabled={formData.state !== 'Select State' && formData.state !== ''} // Enable only if state is selected
                         >
                             {getDistricts().map((district, index) => (
                                 <Picker.Item key={index} label={district} value={district} />
                             ))}
                         </Picker>
+
                     </View>
                 </View>
 
@@ -232,7 +233,7 @@ const Signup = () => {
                                 ]}
                                 onPress={() => handleChange('business_type', type)}
                             >
-                                <Text 
+                                <Text
                                     style={[
                                         styles.businessTypeText,
                                         formData.business_type === type && styles.businessTypeTextActive
@@ -246,8 +247,8 @@ const Signup = () => {
                 </View>
 
                 <View style={styles.registerContainer}>
-                    <TouchableOpacity 
-                        onPress={handleSubmit} 
+                    <TouchableOpacity
+                        onPress={handleSubmit}
                         style={styles.registerButton}
                         disabled={isLoading}
                     >

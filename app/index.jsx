@@ -9,11 +9,17 @@ import Verify from "../assets/Svgicons/Checked";
 import Google from "../assets/Svgicons/Google";
 import Facebook from "../assets/Svgicons/Facebook";
 import Apple from "../assets/Svgicons/Apple";
-import {requestOtp} from "../app/services/authService";
-
-
+import {requestOtp} from "../app/services/_authService";
+import { useFonts } from "expo-font";
+ 
 const Index = () => {
-  const [text, setText] = useState("");
+  const [loaded] = useFonts({
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf')
+  })
+
+  if(!loaded){
+    return null;
+  }
   const [isChecked, setIsChecked] = useState(false);
 
   const [mobile, setMobile] = useState('');
@@ -36,7 +42,7 @@ const Index = () => {
           source={require("../assets/images/Maikisaan_logo.png")}
           style={styles.image}
         />
-        <Text style={{ fontSize: 18, fontWeight: "700", padding: 25 }}>
+        <Text style={{ fontSize: 18, fontWeight: "700", padding: 25, fontFamily: 'SpaceMono' }}>
           Enter Phone number for verification
         </Text>
         <View style={styles.searchbar}>

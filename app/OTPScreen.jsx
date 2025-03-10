@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import {Colors} from "../constants/Colors";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { verifyOtp } from '../app/services/authService';
+import {verifyOtp} from '../app/services/_authService';
 import { useNavigation, useLocalSearchParams } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';

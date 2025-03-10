@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL =     'http://10.65.43.87:8000/api';    
+const BASE_URL =     "http://10.41.126.87:8000/api";  
 
 
 // 'http://127.0.0.1:8000/api';  original url.........
